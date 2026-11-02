@@ -1,0 +1,87 @@
+{
+  "_comment": "Input data for Assignment 2, in reduced Lennard-Jones units (epsilon = sigma = 1). Entries named _comment explain the data and are not used.",
+  "r_cut": 2.5,
+  "q1_q2_q4": {
+    "_comment": {
+      "use": "triangular lattice for Q1, Q2 and Q4; PBC in x and y; potential phi_LJ truncated at r_cut",
+      "lattice_spacing_a": "nearest-neighbour distance a",
+      "row_spacing": "distance between neighbouring rows, sqrt(3)a/2",
+      "epsilon_neigh_default": "Verlet-list padding for Q4(b)",
+      "periodic_cells": "one entry per cell size NxN; fields explained below",
+      "N_perfect": "number of atoms in perfect_NxN.csv",
+      "Lx, Ly": "periodic box runs from (0, 0) to (Lx, Ly); use these values, not ones from a rounded a",
+      "removed_atom_position": "site of the vacancy in vacancy_NxN.csv",
+      "removed_atom_id_in_perfect": "id of that atom in perfect_NxN.csv",
+      "interstitial_position": "starting position of the extra atom in interstitial_NxN.csv",
+      "interstitial_atom_id": "id of the extra atom (last line of interstitial_NxN.csv)"
+    },
+    "lattice": "triangular",
+    "potential": "phi_LJ(r) = 4(r^-12 - r^-6), truncated at r_cut with the cutoff correction",
+    "lattice_spacing_a": 1.1161533221,
+    "row_spacing": 0.9666171314,
+    "epsilon_neigh_default": 0.2,
+    "periodic_cells": {
+      "10x10": {
+        "N_perfect": 100,
+        "Lx": 11.1615332208,
+        "Ly": 9.6661713144,
+        "removed_atom_id_in_perfect": 45,
+        "removed_atom_position": [5.5807666104, 3.8664685258],
+        "interstitial_atom_id": 100,
+        "interstitial_position": [6.1388432714, 4.1886742362]
+      },
+      "16x16": {
+        "N_perfect": 256,
+        "Lx": 17.8584531532,
+        "Ly": 15.465874103,
+        "removed_atom_id_in_perfect": 136,
+        "removed_atom_position": [8.9292265766, 7.7329370515],
+        "interstitial_atom_id": 256,
+        "interstitial_position": [9.4873032377, 8.055142762]
+      },
+      "20x20": {
+        "N_perfect": 400,
+        "Lx": 22.3230664416,
+        "Ly": 19.3323426288,
+        "removed_atom_id_in_perfect": 210,
+        "removed_atom_position": [11.1615332208, 9.6661713144],
+        "interstitial_atom_id": 400,
+        "interstitial_position": [11.7196098818, 9.9883770249]
+      }
+    }
+  },
+  "q3": {
+    "_comment": {
+      "use": "square lattice for Q3; no PBC; potential phi_sq truncated at r_cut",
+      "eps2, r2, s": "depth, centre and width of the Gaussian well in phi_sq",
+      "lattice_spacing_a": "nearest-neighbour distance a of the square lattice",
+      "file": "coordinates and group labels",
+      "N": "number of atoms in the file",
+      "groups": "atoms per group; top and bottom (two rows each) are constrained, mobile atoms are relaxed",
+      "burgers_vector": "Burgers vector b of the edge dislocation",
+      "slip_plane_y": "y coordinate of the slip plane",
+      "extra_half_column_ids": "ids of the extra half-column atoms (last 14 lines of the file)",
+      "displacement_increment": "increment of the horizontal displacement of the top group",
+      "final_displacement": "largest displacement of the top group"
+    },
+    "lattice": "square",
+    "potential": "phi_sq(r) = phi_LJ(r) - eps2*exp(-(r - r2)^2/(2 s^2)), truncated at r_cut with the cutoff correction",
+    "eps2": 1.0,
+    "r2": 1.56,
+    "s": 0.1,
+    "lattice_spacing_a": 1.1030895992,
+    "file": "edge_dislocation_initial.csv",
+    "N": 1022,
+    "groups": {
+      "bottom": 72,
+      "top": 74,
+      "mobile": 876
+    },
+    "boundary": "no PBC; left and right surfaces free; top and bottom groups constrained",
+    "burgers_vector": [1.1030895992, 0.0],
+    "slip_plane_y": 0.0,
+    "extra_half_column_ids": [1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021],
+    "displacement_increment": 0.02,
+    "final_displacement": 0.5
+  }
+}
